@@ -1,0 +1,9 @@
+# run this as root
+#download it
+curl -o /root/amazon-cloudwatch-agent.deb https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb
+#install it
+dpkg -i -E /root/amazon-cloudwatch-agent.deb
+# add the cwagent user to the adm group so it can read logs
+usermod -aG adm cwagent
+
+
