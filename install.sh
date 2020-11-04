@@ -21,6 +21,21 @@ EOF
 nano /home/cwagent/.aws/credentials
 # set ownership
 chmod -R cwagent.cwagent /home/cwagent
+# ensure collectd is installed
+apt install collectd
+# run the wizard
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+# move the configuration file to the right place and name it properly
+mv /opt/aws/amazon-cloudwatch-agent/bin/config.json /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+# restart the service
+service amazon-cloudwatch-agent restart
+# check status
+service amazon-cloudwatch-agent status
+# check the logs
+tail -f /var/log/amazon/amazon-cloudwatch-agent/amazon-cloudwatch-agent.log
+
+
+
 
 
 
