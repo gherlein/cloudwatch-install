@@ -5,6 +5,8 @@ curl -o /root/amazon-cloudwatch-agent.deb https://s3.amazonaws.com/amazoncloudwa
 dpkg -i -E /root/amazon-cloudwatch-agent.deb
 # add the cwagent user to the adm group so it can read logs
 usermod -aG adm cwagent
+#
+#### VERIFY HERE THAT THE cwagent USER HOME DIR WAS CREATED - it seems that the deb is not doing that...
 # configure the user credentials
 cat <<EOF > /home/cwagent/.aws/credentials
 [AmazonCloudWatchAgent]
